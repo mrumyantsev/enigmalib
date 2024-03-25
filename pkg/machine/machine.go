@@ -82,13 +82,13 @@ func (m *Machine) EncryptChar(c byte) byte {
 
 	rotLen := len(m.rotors)
 
-	for i := 0; i < rotLen; i++ {
+	for i := rotLen - 1; i >= 0; i-- {
 		c = m.rotors[i].Forward(c)
 	}
 
 	c = m.reflector.Forward(c)
 
-	for i := rotLen - 1; i >= 0; i-- {
+	for i := 0; i < rotLen; i++ {
 		c = m.rotors[i].Backward(c)
 	}
 
@@ -108,11 +108,11 @@ func (m *Machine) rotateRotors() {
 		return
 	}
 
-	turnovers := 1
+	noTurn := rotLen - 1
 
-	for i := 0; i < rotLen; i++ {
+	for i := rotLen - 1; i >= 0; i-- {
 		if m.rotors[i].IsAtNotch() {
-			turnovers++
+			noTurn--
 
 			continue
 		}
@@ -120,11 +120,11 @@ func (m *Machine) rotateRotors() {
 		break
 	}
 
-	if turnovers > rotLen {
-		turnovers = rotLen
+	if noTurn < 0 {
+		noTurn = 0
 	}
 
-	for i := 0; i < turnovers; i++ {
+	for i := rotLen - 1; i >= noTurn; i-- {
 		m.rotors[i].Turnover()
 	}
 }

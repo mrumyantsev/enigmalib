@@ -27,13 +27,9 @@ func NewEnigmaI(reflector string, rotorSet [RotorsCount]base.RotorSettings, stat
 	}
 
 	rots := make([]base.Rotor, RotorsCount)
-	j := RotorsCount - 1
-	var reversedItem base.RotorSettings
 
 	for i := 0; i < RotorsCount; i++ {
-		reversedItem = rotorSet[j]
-
-		switch reversedItem.Name {
+		switch rotorSet[i].Name {
 		case "II":
 			rots[i] = NewRotorII(
 				byte(rotorSet[i].Pos),
@@ -60,8 +56,6 @@ func NewEnigmaI(reflector string, rotorSet [RotorsCount]base.RotorSettings, stat
 				byte(rotorSet[i].RingPos),
 			)
 		}
-
-		j--
 	}
 
 	var sta base.Stator
