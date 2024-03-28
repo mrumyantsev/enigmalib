@@ -6,7 +6,7 @@ import (
 
 	"github.com/mrumyantsev/encryption-app/pkg/base"
 	"github.com/mrumyantsev/encryption-app/pkg/machine"
-	enigmai "github.com/mrumyantsev/encryption-app/pkg/machine/enigma-i"
+	enigmam4shark "github.com/mrumyantsev/encryption-app/pkg/machine/enigma-m4-shark"
 )
 
 func main() {
@@ -34,9 +34,10 @@ func main() {
 }
 
 func initMachine() base.Machine {
-	return enigmai.NewEnigmaI(
-		"B",
-		[3]base.RotorSettings{
+	return enigmam4shark.NewEnigmaM4Shark(
+		"B THIN",
+		[4]base.RotorSettings{
+			{Name: "BETA", Pos: 0, RingPos: 0},
 			{Name: "I", Pos: 0, RingPos: 0},
 			{Name: "II", Pos: 0, RingPos: 0},
 			{Name: "III", Pos: 0, RingPos: 0},
