@@ -23,7 +23,7 @@ type Machine struct {
 }
 
 func NewMachine(refl base.Reflector, rots []base.Rotor, sta base.Stator, pb base.Plugboard, fil base.Filter, tr base.Translator) *Machine {
-	return &Machine{
+	m := &Machine{
 		reflector: refl,
 		rotors:    rots,
 		stator:    sta,
@@ -32,6 +32,10 @@ func NewMachine(refl base.Reflector, rots []base.Rotor, sta base.Stator, pb base
 		filter:     fil,
 		translator: tr,
 	}
+
+	m.reverseRotorsOrder()
+
+	return m
 }
 
 func (m *Machine) EncryptString(msg string) (string, error) {
@@ -80,15 +84,15 @@ func (m *Machine) EncryptChar(c byte) byte {
 
 	c = m.stator.Forward(c)
 
-	rotLen := len(m.rotors)
+	rotorsLen := len(m.rotors)
 
-	for i := rotLen - 1; i >= 0; i-- {
+	for i := 0; i < rotorsLen; i++ {
 		c = m.rotors[i].Forward(c)
 	}
 
 	c = m.reflector.Forward(c)
 
-	for i := 0; i < rotLen; i++ {
+	for i := rotorsLen - 1; i >= 0; i-- {
 		c = m.rotors[i].Backward(c)
 	}
 
@@ -102,17 +106,16 @@ func (m *Machine) EncryptChar(c byte) byte {
 }
 
 func (m *Machine) rotateRotors() {
-	rotLen := len(m.rotors)
-
-	if rotLen == 0 {
+	rotorsLen := len(m.rotors)
+	if rotorsLen == 0 {
 		return
 	}
 
-	noTurn := rotLen - 1
+	turnovers := 1
 
-	for i := rotLen - 1; i >= 0; i-- {
+	for i := 0; i < rotorsLen; i++ {
 		if m.rotors[i].IsAtNotch() {
-			noTurn--
+			turnovers++
 
 			continue
 		}
@@ -120,11 +123,20 @@ func (m *Machine) rotateRotors() {
 		break
 	}
 
-	if noTurn < 0 {
-		noTurn = 0
+	if turnovers > rotorsLen {
+		turnovers = rotorsLen
 	}
 
-	for i := rotLen - 1; i >= noTurn; i-- {
+	for i := 0; i < turnovers; i++ {
 		m.rotors[i].Turnover()
+	}
+}
+
+func (m *Machine) reverseRotorsOrder() {
+	j := len(m.rotors) - 1
+
+	for i := 0; i < j; i++ {
+		m.rotors[i], m.rotors[j] = m.rotors[j], m.rotors[i]
+		j--
 	}
 }
