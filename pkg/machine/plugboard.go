@@ -3,7 +3,7 @@ package machine
 import (
 	"strings"
 
-	"github.com/mrumyantsev/enigma/pkg/base"
+	"github.com/mrumyantsev/encryption-app/pkg/base"
 )
 
 type Plugboard struct {

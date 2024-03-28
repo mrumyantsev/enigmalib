@@ -1,6 +1,6 @@
 package machine
 
-import "github.com/mrumyantsev/enigma/pkg/base"
+import "github.com/mrumyantsev/encryption-app/pkg/base"
 
 type Translator struct {
 }

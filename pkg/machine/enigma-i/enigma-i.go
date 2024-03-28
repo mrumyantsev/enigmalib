@@ -1,8 +1,8 @@
 package enigmai
 
 import (
-	"github.com/mrumyantsev/enigma/pkg/base"
-	"github.com/mrumyantsev/enigma/pkg/machine"
+	"github.com/mrumyantsev/encryption-app/pkg/base"
+	"github.com/mrumyantsev/encryption-app/pkg/machine"
 )
 
 const (

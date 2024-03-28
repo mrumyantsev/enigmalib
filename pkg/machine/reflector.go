@@ -1,7 +1,7 @@
 package machine
 
 import (
-	"github.com/mrumyantsev/enigma/pkg/base"
+	"github.com/mrumyantsev/encryption-app/pkg/base"
 )
 
 type Reflector struct {

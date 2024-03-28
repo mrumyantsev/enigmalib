@@ -1,6 +1,6 @@
 package enigmai
 
-import "github.com/mrumyantsev/enigma/pkg/machine"
+import "github.com/mrumyantsev/encryption-app/pkg/machine"
 
 type RotorIV struct {
 	*machine.Rotor
