@@ -28,18 +28,18 @@ func NewEnigmaISondermaschine(reflector string, rotorSet [RotorsCount]base.Rotor
 		switch rotorSet[i].Name {
 		case "II":
 			rots[i] = NewRotorII(
-				byte(rotorSet[i].Pos),
-				byte(rotorSet[i].RingPos),
+				rotorSet[i].Pos,
+				rotorSet[i].RingPos,
 			)
 		case "III":
 			rots[i] = NewRotorIII(
-				byte(rotorSet[i].Pos),
-				byte(rotorSet[i].RingPos),
+				rotorSet[i].Pos,
+				rotorSet[i].RingPos,
 			)
 		default:
 			rots[i] = NewRotorI(
-				byte(rotorSet[i].Pos),
-				byte(rotorSet[i].RingPos),
+				rotorSet[i].Pos,
+				rotorSet[i].RingPos,
 			)
 		}
 	}

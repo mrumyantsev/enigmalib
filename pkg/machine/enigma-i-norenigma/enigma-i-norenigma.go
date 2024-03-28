@@ -28,28 +28,28 @@ func NewEnigmaINorenigma(reflector string, rotorSet [RotorsCount]base.RotorSetti
 		switch rotorSet[i].Name {
 		case "II":
 			rots[i] = NewRotorII(
-				byte(rotorSet[i].Pos),
-				byte(rotorSet[i].RingPos),
+				rotorSet[i].Pos,
+				rotorSet[i].RingPos,
 			)
 		case "III":
 			rots[i] = NewRotorIII(
-				byte(rotorSet[i].Pos),
-				byte(rotorSet[i].RingPos),
+				rotorSet[i].Pos,
+				rotorSet[i].RingPos,
 			)
 		case "IV":
 			rots[i] = NewRotorIV(
-				byte(rotorSet[i].Pos),
-				byte(rotorSet[i].RingPos),
+				rotorSet[i].Pos,
+				rotorSet[i].RingPos,
 			)
 		case "V":
 			rots[i] = NewRotorV(
-				byte(rotorSet[i].Pos),
-				byte(rotorSet[i].RingPos),
+				rotorSet[i].Pos,
+				rotorSet[i].RingPos,
 			)
 		default:
 			rots[i] = NewRotorI(
-				byte(rotorSet[i].Pos),
-				byte(rotorSet[i].RingPos),
+				rotorSet[i].Pos,
+				rotorSet[i].RingPos,
 			)
 		}
 	}
