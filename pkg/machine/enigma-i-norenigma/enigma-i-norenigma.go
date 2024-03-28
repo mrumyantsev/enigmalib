@@ -3,6 +3,7 @@ package enigmainorenigma
 import (
 	"github.com/mrumyantsev/encryption-app/pkg/base"
 	"github.com/mrumyantsev/encryption-app/pkg/machine"
+	enigmai "github.com/mrumyantsev/encryption-app/pkg/machine/enigma-i"
 )
 
 const (
@@ -58,7 +59,7 @@ func NewEnigmaINorenigma(reflector string, rotorSet [RotorsCount]base.RotorSetti
 
 	switch stator {
 	default:
-		sta = NewStator()
+		sta = enigmai.NewStator()
 	}
 
 	pb := machine.NewPlugboard(pboard, CharactersCount)

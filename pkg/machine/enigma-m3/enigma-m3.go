@@ -76,7 +76,7 @@ func NewEnigmaM3(reflector string, rotorSet [RotorsCount]base.RotorSettings, sta
 
 	switch stator {
 	default:
-		sta = NewStator()
+		sta = enigmai.NewStator()
 	}
 
 	pb := machine.NewPlugboard(pboard, CharactersCount)
