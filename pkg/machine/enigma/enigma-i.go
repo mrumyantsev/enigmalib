@@ -54,3 +54,23 @@ func NewEnigmaI(reflector string, rotorSet [base.RotorsCount3]base.RotorSettings
 		machine.NewMachine(refl, rots, sta, pb, fil, tr),
 	}
 }
+
+func EnigmaISpec() base.MachineSpec {
+	return base.MachineSpec{
+		Name: "Enigma I",
+		Reflectors: []base.ReflectorSpec{
+			{Name: "A"},
+			{Name: "B"},
+			{Name: "C"},
+		},
+		Rotors: []base.RotorSpec{
+			{Name: "I", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "II", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "III", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "IV", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "V", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+		},
+		RotorsCount:    base.RotorsCount3,
+		IsHasPlugboard: true,
+	}
+}

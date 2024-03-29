@@ -64,3 +64,27 @@ func NewEnigmaM4Shark(reflector string, rotorSet [base.RotorsCount4]base.RotorSe
 		machine.NewMachine(refl, rots, sta, pb, fil, tr),
 	}
 }
+
+func EnigmaM4SharkSpec() base.MachineSpec {
+	return base.MachineSpec{
+		Name: "Enigma M4 \"Shark\"",
+		Reflectors: []base.ReflectorSpec{
+			{Name: "B Thin"},
+			{Name: "C Thin"},
+		},
+		Rotors: []base.RotorSpec{
+			{Name: "Beta", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "Gamma", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "I", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "II", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "III", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "IV", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "V", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "VI", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "VII", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+			{Name: "VIII", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+		},
+		RotorsCount:    base.RotorsCount4,
+		IsHasPlugboard: true,
+	}
+}
