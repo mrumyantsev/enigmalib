@@ -12,12 +12,7 @@ type EnigmaISondermaschine struct {
 }
 
 func NewEnigmaISondermaschine(reflector string, rotorSet [base.RotorsCount3]base.RotorSettings, pboard string) *EnigmaISondermaschine {
-	var refl base.Reflector
-
-	switch reflector {
-	default:
-		refl = enigmaism.NewReflector()
-	}
+	refl := enigmaism.NewReflector()
 
 	rots := make([]base.Rotor, base.RotorsCount3)
 	var settings base.RotorSettings

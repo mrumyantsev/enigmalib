@@ -12,12 +12,7 @@ type EnigmaINorenigma struct {
 }
 
 func NewEnigmaINorenigma(reflector string, rotorSet [base.RotorsCount3]base.RotorSettings, pboard string) *EnigmaINorenigma {
-	var refl base.Reflector
-
-	switch reflector {
-	default:
-		refl = enigmaine.NewReflector()
-	}
+	refl := enigmaine.NewReflector()
 
 	rots := make([]base.Rotor, base.RotorsCount3)
 	var settings base.RotorSettings
