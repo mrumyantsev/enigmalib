@@ -1,5 +1,20 @@
 package base
 
+const (
+	AlphaLetterCount byte = 26
+	AlphaCharsOffset byte = 65
+
+	CharactersCount26 = 26
+	RotorsCount3      = 3
+	RotorsCount4      = 4
+)
+
+type RotorSettings struct {
+	Name    string
+	Pos     byte
+	RingPos byte
+}
+
 type Machine interface {
 	EncryptString(msg string) (string, error)
 	Encrypt(msg []byte) ([]byte, error)
