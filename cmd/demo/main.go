@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/mrumyantsev/encryption-app/pkg/base"
 	"github.com/mrumyantsev/encryption-app/pkg/machine"
 	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma"
+	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/base"
 )
 
 func main() {
 	machine1 := initMachine()
 	machine2 := initMachine()
-	filter := machine.NewFilter()
+	filter := base.NewFilter()
 
 	plaintext := "Keine besonderen Ereignisse"
 
@@ -33,10 +33,10 @@ func main() {
 	print(out, nil)
 }
 
-func initMachine() base.Machine {
-	return enigma.NewEnigmaM4Shark(
+func initMachine() machine.Machiner {
+	return enigma.NewEnigmaM4S(
 		"B THIN",
-		[base.RotorsCount4]base.RotorSettings{
+		[base.RotorsCount4]machine.RotorSettings{
 			{Name: "BETA", Pos: 0, RingPos: 0},
 			{Name: "I", Pos: 0, RingPos: 0},
 			{Name: "II", Pos: 0, RingPos: 0},
@@ -46,7 +46,7 @@ func initMachine() base.Machine {
 	)
 }
 
-func print(msg string, fil base.Filter) {
+func print(msg string, fil base.Filterer) {
 	msgLen := len(msg)
 
 	if msgLen == 0 {
