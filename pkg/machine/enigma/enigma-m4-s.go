@@ -1,88 +1,86 @@
 package enigma
 
 import (
-	"github.com/mrumyantsev/encryption-app/pkg/base"
 	"github.com/mrumyantsev/encryption-app/pkg/machine"
-	enigmai "github.com/mrumyantsev/encryption-app/pkg/part/enigma-i"
-	enigmam3 "github.com/mrumyantsev/encryption-app/pkg/part/enigma-m3"
-	enigmam4s "github.com/mrumyantsev/encryption-app/pkg/part/enigma-m4-s"
+	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/base"
+	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/parts"
 )
 
-type EnigmaM4Shark struct {
-	*machine.Machine
+type EnigmaM4S struct {
+	*base.Machine
 }
 
-func NewEnigmaM4Shark(reflector string, rotorSet [base.RotorsCount4]base.RotorSettings, pboard string) *EnigmaM4Shark {
-	var refl base.Reflector
+func NewEnigmaM4S(reflector string, rotorSet [base.RotorsCount4]machine.RotorSettings, pboard string) *EnigmaM4S {
+	var refl base.Reflectorer
 
 	switch reflector {
 	case "C THIN":
-		refl = enigmam4s.NewReflectorCThin()
+		refl = parts.NewM4SReflectorCThin()
 	default:
-		refl = enigmam4s.NewReflectorBThin()
+		refl = parts.NewM4SReflectorBThin()
 	}
 
-	rots := make([]base.Rotor, base.RotorsCount4)
-	var settings base.RotorSettings
+	rots := make([]base.Rotorer, base.RotorsCount4)
+	var settings machine.RotorSettings
 
 	for i := 0; i < base.RotorsCount4; i++ {
 		settings = rotorSet[i]
 
 		switch settings.Name {
-		case "II":
-			rots[i] = enigmai.NewRotorII(settings.Pos, settings.RingPos)
-		case "III":
-			rots[i] = enigmai.NewRotorIII(settings.Pos, settings.RingPos)
-		case "IV":
-			rots[i] = enigmai.NewRotorIV(settings.Pos, settings.RingPos)
-		case "V":
-			rots[i] = enigmai.NewRotorV(settings.Pos, settings.RingPos)
-		case "VI":
-			rots[i] = enigmam3.NewRotorVI(settings.Pos, settings.RingPos)
-		case "VII":
-			rots[i] = enigmam3.NewRotorVII(settings.Pos, settings.RingPos)
-		case "VIII":
-			rots[i] = enigmam3.NewRotorVIII(settings.Pos, settings.RingPos)
-		case "BETA":
-			rots[i] = enigmam4s.NewRotorBeta(settings.Pos, settings.RingPos)
 		case "GAMMA":
-			rots[i] = enigmam4s.NewRotorGamma(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewM4SRotorGamma(settings.Pos, settings.RingPos)
+		case "I":
+			rots[i] = parts.NewIRotorI(settings.Pos, settings.RingPos)
+		case "II":
+			rots[i] = parts.NewIRotorII(settings.Pos, settings.RingPos)
+		case "III":
+			rots[i] = parts.NewIRotorIII(settings.Pos, settings.RingPos)
+		case "IV":
+			rots[i] = parts.NewIRotorIV(settings.Pos, settings.RingPos)
+		case "V":
+			rots[i] = parts.NewIRotorV(settings.Pos, settings.RingPos)
+		case "VI":
+			rots[i] = parts.NewM3RotorVI(settings.Pos, settings.RingPos)
+		case "VII":
+			rots[i] = parts.NewM3RotorVII(settings.Pos, settings.RingPos)
+		case "VIII":
+			rots[i] = parts.NewM3RotorVIII(settings.Pos, settings.RingPos)
 		default:
-			rots[i] = enigmai.NewRotorI(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewM4SRotorBeta(settings.Pos, settings.RingPos)
 		}
 	}
 
-	sta := enigmai.NewStator()
+	sta := parts.NewIStator()
 
-	pb := machine.NewPlugboard(pboard, base.CharactersCount26)
+	pb := base.NewPlugboard(pboard, base.CharsCount26)
 
-	fil := machine.NewFilter()
+	fil := base.NewFilter()
 
-	tr := machine.NewTranslator()
+	tr := base.NewTranslator()
 
-	return &EnigmaM4Shark{
-		machine.NewMachine(refl, rots, sta, pb, fil, tr),
+	return &EnigmaM4S{
+		base.NewMachine(refl, rots, sta, pb, fil, tr),
 	}
 }
 
-func EnigmaM4SharkSpec() base.MachineSpec {
-	return base.MachineSpec{
+func EnigmaM4SSpec() machine.MachineSpec {
+	return machine.MachineSpec{
 		Name: "Enigma M4 \"Shark\"",
-		Reflectors: []base.ReflectorSpec{
+		Reflectors: []machine.ReflectorSpec{
 			{Name: "B Thin"},
 			{Name: "C Thin"},
 		},
-		Rotors: []base.RotorSpec{
-			{Name: "Beta", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "Gamma", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "I", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "II", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "III", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "IV", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "V", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "VI", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "VII", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "VIII", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+		Rotors: []machine.RotorSpec{
+			{Name: "Beta", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "Gamma", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "I", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "II", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "III", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "IV", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "V", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "VI", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "VII", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "VIII", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
 		},
 		RotorsCount:    base.RotorsCount4,
 		IsHasPlugboard: true,

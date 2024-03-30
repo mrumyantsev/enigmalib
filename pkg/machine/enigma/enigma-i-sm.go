@@ -1,55 +1,54 @@
 package enigma
 
 import (
-	"github.com/mrumyantsev/encryption-app/pkg/base"
 	"github.com/mrumyantsev/encryption-app/pkg/machine"
-	enigmai "github.com/mrumyantsev/encryption-app/pkg/part/enigma-i"
-	enigmaism "github.com/mrumyantsev/encryption-app/pkg/part/enigma-i-sm"
+	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/base"
+	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/parts"
 )
 
-type EnigmaISondermaschine struct {
-	*machine.Machine
+type EnigmaISM struct {
+	*base.Machine
 }
 
-func NewEnigmaISondermaschine(reflector string, rotorSet [base.RotorsCount3]base.RotorSettings, pboard string) *EnigmaISondermaschine {
-	refl := enigmaism.NewReflector()
+func NewEnigmaISM(reflector string, rotorSet [base.RotorsCount3]machine.RotorSettings, pboard string) *EnigmaISM {
+	refl := parts.NewISMReflector()
 
-	rots := make([]base.Rotor, base.RotorsCount3)
-	var settings base.RotorSettings
+	rots := make([]base.Rotorer, base.RotorsCount3)
+	var settings machine.RotorSettings
 
 	for i := 0; i < base.RotorsCount3; i++ {
 		settings = rotorSet[i]
 
 		switch settings.Name {
 		case "II":
-			rots[i] = enigmaism.NewRotorII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewISMRotorII(settings.Pos, settings.RingPos)
 		case "III":
-			rots[i] = enigmaism.NewRotorIII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewISMRotorIII(settings.Pos, settings.RingPos)
 		default:
-			rots[i] = enigmaism.NewRotorI(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewISMRotorI(settings.Pos, settings.RingPos)
 		}
 	}
 
-	sta := enigmai.NewStator()
+	sta := parts.NewIStator()
 
-	pb := machine.NewPlugboard(pboard, base.CharactersCount26)
+	pb := base.NewPlugboard(pboard, base.CharsCount26)
 
-	fil := machine.NewFilter()
+	fil := base.NewFilter()
 
-	tr := machine.NewTranslator()
+	tr := base.NewTranslator()
 
-	return &EnigmaISondermaschine{
-		machine.NewMachine(refl, rots, sta, pb, fil, tr),
+	return &EnigmaISM{
+		base.NewMachine(refl, rots, sta, pb, fil, tr),
 	}
 }
 
-func EnigmaISondermaschineSpec() base.MachineSpec {
-	return base.MachineSpec{
+func EnigmaISMSpec() machine.MachineSpec {
+	return machine.MachineSpec{
 		Name: "Enigma I \"Sondermaschine\"",
-		Rotors: []base.RotorSpec{
-			{Name: "I", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "II", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "III", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+		Rotors: []machine.RotorSpec{
+			{Name: "I", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "II", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "III", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
 		},
 		RotorsCount:    base.RotorsCount3,
 		IsHasPlugboard: true,

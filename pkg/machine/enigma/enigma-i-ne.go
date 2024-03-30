@@ -1,61 +1,60 @@
 package enigma
 
 import (
-	"github.com/mrumyantsev/encryption-app/pkg/base"
 	"github.com/mrumyantsev/encryption-app/pkg/machine"
-	enigmai "github.com/mrumyantsev/encryption-app/pkg/part/enigma-i"
-	enigmaine "github.com/mrumyantsev/encryption-app/pkg/part/enigma-i-ne"
+	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/base"
+	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/parts"
 )
 
-type EnigmaINorenigma struct {
-	*machine.Machine
+type EnigmaINE struct {
+	*base.Machine
 }
 
-func NewEnigmaINorenigma(reflector string, rotorSet [base.RotorsCount3]base.RotorSettings, pboard string) *EnigmaINorenigma {
-	refl := enigmaine.NewReflector()
+func NewEnigmaINE(reflector string, rotorSet [base.RotorsCount3]machine.RotorSettings, pboard string) *EnigmaINE {
+	refl := parts.NewINEReflector()
 
-	rots := make([]base.Rotor, base.RotorsCount3)
-	var settings base.RotorSettings
+	rots := make([]base.Rotorer, base.RotorsCount3)
+	var settings machine.RotorSettings
 
 	for i := 0; i < base.RotorsCount3; i++ {
 		settings = rotorSet[i]
 
 		switch settings.Name {
 		case "II":
-			rots[i] = enigmaine.NewRotorII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorII(settings.Pos, settings.RingPos)
 		case "III":
-			rots[i] = enigmaine.NewRotorIII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorIII(settings.Pos, settings.RingPos)
 		case "IV":
-			rots[i] = enigmaine.NewRotorIV(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorIV(settings.Pos, settings.RingPos)
 		case "V":
-			rots[i] = enigmaine.NewRotorV(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorV(settings.Pos, settings.RingPos)
 		default:
-			rots[i] = enigmaine.NewRotorI(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorI(settings.Pos, settings.RingPos)
 		}
 	}
 
-	sta := enigmai.NewStator()
+	sta := parts.NewIStator()
 
-	pb := machine.NewPlugboard(pboard, base.CharactersCount26)
+	pb := base.NewPlugboard(pboard, base.CharsCount26)
 
-	fil := machine.NewFilter()
+	fil := base.NewFilter()
 
-	tr := machine.NewTranslator()
+	tr := base.NewTranslator()
 
-	return &EnigmaINorenigma{
-		machine.NewMachine(refl, rots, sta, pb, fil, tr),
+	return &EnigmaINE{
+		base.NewMachine(refl, rots, sta, pb, fil, tr),
 	}
 }
 
-func EnigmaINorenigmaSpec() base.MachineSpec {
-	return base.MachineSpec{
+func EnigmaINESpec() machine.MachineSpec {
+	return machine.MachineSpec{
 		Name: "Enigma I \"Norenigma\"",
-		Rotors: []base.RotorSpec{
-			{Name: "I", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "II", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "III", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "IV", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
-			{Name: "V", Poses: base.CharactersCount26, RingPoses: base.CharactersCount26},
+		Rotors: []machine.RotorSpec{
+			{Name: "I", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "II", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "III", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "IV", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "V", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
 		},
 		RotorsCount:    base.RotorsCount3,
 		IsHasPlugboard: true,
