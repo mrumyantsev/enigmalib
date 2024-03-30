@@ -6,10 +6,10 @@ type MachinesSpec struct {
 
 type MachineSpec struct {
 	Name           string          `json:"name"`
-	Reflectors     []ReflectorSpec `json:"refls"`
-	Rotors         []RotorSpec     `json:"rots"`
-	RotorsCount    int             `json:"rotsCount"`
-	IsHasPlugboard bool            `json:"isHasPb"`
+	Reflectors     []ReflectorSpec `json:"refls,omitempty"`
+	Rotors         []RotorSpec     `json:"rots,omitempty"`
+	RotorsCount    int             `json:"rotsCount,omitempty"`
+	IsHasPlugboard bool            `json:"isHasPb,omitempty"`
 }
 
 type ReflectorSpec struct {
