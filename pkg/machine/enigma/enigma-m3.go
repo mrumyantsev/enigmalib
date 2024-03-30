@@ -6,10 +6,12 @@ import (
 	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/parts"
 )
 
+// An Enigma M3 model.
 type EnigmaM3 struct {
 	*base.Machine
 }
 
+// NewEnigmaM3 creates the Enigma M3 model.
 func NewEnigmaM3(reflector string, rotorSet [base.RotorsCount3]machine.RotorSettings, pboard string) *EnigmaM3 {
 	var refl base.Reflectorer
 
@@ -59,6 +61,7 @@ func NewEnigmaM3(reflector string, rotorSet [base.RotorsCount3]machine.RotorSett
 	}
 }
 
+// EnigmaM3Spec returns the Enigma M3 specification.
 func EnigmaM3Spec() machine.MachineSpec {
 	return machine.MachineSpec{
 		Name: "Enigma M3",

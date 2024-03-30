@@ -6,10 +6,12 @@ import (
 	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/parts"
 )
 
+// An Enigma M4 "Shark" model.
 type EnigmaM4S struct {
 	*base.Machine
 }
 
+// NewEnigmaM4S creates the Enigma M4 "Shark" model.
 func NewEnigmaM4S(reflector string, rotorSet [base.RotorsCount4]machine.RotorSettings, pboard string) *EnigmaM4S {
 	var refl base.Reflectorer
 
@@ -63,6 +65,7 @@ func NewEnigmaM4S(reflector string, rotorSet [base.RotorsCount4]machine.RotorSet
 	}
 }
 
+// EnigmaM4SSpec returns the Enigma M4 "Shark" specification.
 func EnigmaM4SSpec() machine.MachineSpec {
 	return machine.MachineSpec{
 		Name: "Enigma M4 \"Shark\"",

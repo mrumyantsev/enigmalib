@@ -6,10 +6,12 @@ import (
 	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/parts"
 )
 
+// An Enigma I Sondermaschine A-17401 S model.
 type EnigmaISM struct {
 	*base.Machine
 }
 
+// NewEnigmaISM creates the Enigma I Sondermaschine A-17401 S model.
 func NewEnigmaISM(reflector string, rotorSet [base.RotorsCount3]machine.RotorSettings, pboard string) *EnigmaISM {
 	refl := parts.NewISMReflector()
 
@@ -42,6 +44,7 @@ func NewEnigmaISM(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 	}
 }
 
+// EnigmaISMSpec returns the Enigma I Sondermaschine A-17401 S specification.
 func EnigmaISMSpec() machine.MachineSpec {
 	return machine.MachineSpec{
 		Name: "Enigma I \"Sondermaschine\"",

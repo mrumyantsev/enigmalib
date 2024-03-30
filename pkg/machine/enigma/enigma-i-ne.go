@@ -6,10 +6,12 @@ import (
 	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/parts"
 )
 
+// An Enigma I Norway Enigma model.
 type EnigmaINE struct {
 	*base.Machine
 }
 
+// NewEnigmaINE creates the Enigma I Norway Enigma model.
 func NewEnigmaINE(reflector string, rotorSet [base.RotorsCount3]machine.RotorSettings, pboard string) *EnigmaINE {
 	refl := parts.NewINEReflector()
 
@@ -46,6 +48,7 @@ func NewEnigmaINE(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 	}
 }
 
+// EnigmaINESpec returns the Enigma I Norway Enigma specification.
 func EnigmaINESpec() machine.MachineSpec {
 	return machine.MachineSpec{
 		Name: "Enigma I \"Norenigma\"",
