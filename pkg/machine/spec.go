@@ -5,11 +5,12 @@ type MachinesSpec struct {
 }
 
 type MachineSpec struct {
-	Name           string          `json:"name"`
-	Reflectors     []ReflectorSpec `json:"refls,omitempty"`
-	Rotors         []RotorSpec     `json:"rots,omitempty"`
-	RotorsCount    int             `json:"rotsCount,omitempty"`
-	IsHasPlugboard bool            `json:"isHasPb,omitempty"`
+	Name            string          `json:"name"`
+	Reflectors      []ReflectorSpec `json:"reflectors,omitempty"`
+	Rotors          []RotorSpec     `json:"rotors,omitempty"`
+	ReflectorsCount int             `json:"reflectorsCount,omitempty"`
+	RotorsCount     int             `json:"rotorsCount,omitempty"`
+	PlugboardsCount int             `json:"plugboardsCount,omitempty"`
 }
 
 type ReflectorSpec struct {
@@ -17,7 +18,7 @@ type ReflectorSpec struct {
 }
 
 type RotorSpec struct {
-	Name      string `json:"name"`
-	Poses     byte   `json:"poses"`
-	RingPoses byte   `json:"ringPoses"`
+	Name          string `json:"name"`
+	Positions     byte   `json:"positions"`
+	RingPositions byte   `json:"ringPositions"`
 }

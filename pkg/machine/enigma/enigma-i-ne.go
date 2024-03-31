@@ -53,13 +53,14 @@ func EnigmaINESpec() machine.MachineSpec {
 	return machine.MachineSpec{
 		Name: "Enigma I \"Norenigma\"",
 		Rotors: []machine.RotorSpec{
-			{Name: "I", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
-			{Name: "II", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
-			{Name: "III", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
-			{Name: "IV", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
-			{Name: "V", Poses: base.CharsCount26, RingPoses: base.CharsCount26},
+			{Name: "I", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
+			{Name: "II", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
+			{Name: "III", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
+			{Name: "IV", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
+			{Name: "V", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
 		},
-		RotorsCount:    base.RotorsCount3,
-		IsHasPlugboard: true,
+		ReflectorsCount: base.ReflectorsCount1,
+		RotorsCount:     base.RotorsCount3,
+		PlugboardsCount: base.PlugboardsCount1,
 	}
 }
