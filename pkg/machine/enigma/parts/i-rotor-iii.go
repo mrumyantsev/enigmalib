@@ -1,7 +1,7 @@
 package parts
 
 import (
-	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/base"
+	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/base"
 )
 
 type IRotorIII struct {

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/mrumyantsev/encryption-app/pkg/machine"
-	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma"
-	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma/base"
+	"github.com/mrumyantsev/cipher-machines-app/pkg/machine"
+	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma"
+	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/base"
 )
 
 func main() {
