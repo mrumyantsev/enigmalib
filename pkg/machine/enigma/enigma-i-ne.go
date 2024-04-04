@@ -59,7 +59,6 @@ func EnigmaINESpec() machine.MachineSpec {
 			{Name: "IV", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
 			{Name: "V", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
 		},
-		ReflectorsCount: base.ReflectorsCount1,
 		RotorsCount:     base.RotorsCount3,
 		PlugboardsCount: base.PlugboardsCount1,
 	}

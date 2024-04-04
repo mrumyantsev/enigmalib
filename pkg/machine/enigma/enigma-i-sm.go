@@ -53,7 +53,6 @@ func EnigmaISMSpec() machine.MachineSpec {
 			{Name: "II", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
 			{Name: "III", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
 		},
-		ReflectorsCount: base.ReflectorsCount1,
 		RotorsCount:     base.RotorsCount3,
 		PlugboardsCount: base.PlugboardsCount1,
 	}
