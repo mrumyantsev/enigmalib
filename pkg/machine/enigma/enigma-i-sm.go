@@ -23,11 +23,11 @@ func NewEnigmaISM(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 
 		switch settings.Name {
 		case "II":
-			rots[i] = parts.NewISMRotorII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewISMRotorII(settings.Position, settings.Ring)
 		case "III":
-			rots[i] = parts.NewISMRotorIII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewISMRotorIII(settings.Position, settings.Ring)
 		default:
-			rots[i] = parts.NewISMRotorI(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewISMRotorI(settings.Position, settings.Ring)
 		}
 	}
 

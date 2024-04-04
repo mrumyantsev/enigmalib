@@ -32,15 +32,15 @@ func NewEnigmaI(reflector string, rotorSet [base.RotorsCount3]machine.RotorSetti
 
 		switch settings.Name {
 		case "II":
-			rots[i] = parts.NewIRotorII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorII(settings.Position, settings.Ring)
 		case "III":
-			rots[i] = parts.NewIRotorIII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorIII(settings.Position, settings.Ring)
 		case "IV":
-			rots[i] = parts.NewIRotorIV(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorIV(settings.Position, settings.Ring)
 		case "V":
-			rots[i] = parts.NewIRotorV(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorV(settings.Position, settings.Ring)
 		default:
-			rots[i] = parts.NewIRotorI(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorI(settings.Position, settings.Ring)
 		}
 	}
 

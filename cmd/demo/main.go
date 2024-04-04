@@ -37,10 +37,10 @@ func initMachine() machine.Machiner {
 	return enigma.NewEnigmaM4S(
 		"B THIN",
 		[base.RotorsCount4]machine.RotorSettings{
-			{Name: "BETA", Pos: 0, RingPos: 0},
-			{Name: "I", Pos: 0, RingPos: 0},
-			{Name: "II", Pos: 0, RingPos: 0},
-			{Name: "III", Pos: 0, RingPos: 0},
+			{Name: "BETA", Position: 0, Ring: 0},
+			{Name: "I", Position: 0, Ring: 0},
+			{Name: "II", Position: 0, Ring: 0},
+			{Name: "III", Position: 0, Ring: 0},
 		},
 		"",
 	)

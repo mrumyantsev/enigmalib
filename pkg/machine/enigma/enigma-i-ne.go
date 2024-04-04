@@ -23,15 +23,15 @@ func NewEnigmaINE(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 
 		switch settings.Name {
 		case "II":
-			rots[i] = parts.NewINERotorII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorII(settings.Position, settings.Ring)
 		case "III":
-			rots[i] = parts.NewINERotorIII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorIII(settings.Position, settings.Ring)
 		case "IV":
-			rots[i] = parts.NewINERotorIV(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorIV(settings.Position, settings.Ring)
 		case "V":
-			rots[i] = parts.NewINERotorV(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorV(settings.Position, settings.Ring)
 		default:
-			rots[i] = parts.NewINERotorI(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewINERotorI(settings.Position, settings.Ring)
 		}
 	}
 

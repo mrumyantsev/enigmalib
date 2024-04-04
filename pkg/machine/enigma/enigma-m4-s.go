@@ -30,25 +30,25 @@ func NewEnigmaM4S(reflector string, rotorSet [base.RotorsCount4]machine.RotorSet
 
 		switch settings.Name {
 		case "GAMMA":
-			rots[i] = parts.NewM4SRotorGamma(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewM4SRotorGamma(settings.Position, settings.Ring)
 		case "I":
-			rots[i] = parts.NewIRotorI(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorI(settings.Position, settings.Ring)
 		case "II":
-			rots[i] = parts.NewIRotorII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorII(settings.Position, settings.Ring)
 		case "III":
-			rots[i] = parts.NewIRotorIII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorIII(settings.Position, settings.Ring)
 		case "IV":
-			rots[i] = parts.NewIRotorIV(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorIV(settings.Position, settings.Ring)
 		case "V":
-			rots[i] = parts.NewIRotorV(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewIRotorV(settings.Position, settings.Ring)
 		case "VI":
-			rots[i] = parts.NewM3RotorVI(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewM3RotorVI(settings.Position, settings.Ring)
 		case "VII":
-			rots[i] = parts.NewM3RotorVII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewM3RotorVII(settings.Position, settings.Ring)
 		case "VIII":
-			rots[i] = parts.NewM3RotorVIII(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewM3RotorVIII(settings.Position, settings.Ring)
 		default:
-			rots[i] = parts.NewM4SRotorBeta(settings.Pos, settings.RingPos)
+			rots[i] = parts.NewM4SRotorBeta(settings.Position, settings.Ring)
 		}
 	}
 

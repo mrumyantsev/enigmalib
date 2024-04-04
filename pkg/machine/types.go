@@ -7,7 +7,7 @@ type Machiner interface {
 }
 
 type RotorSettings struct {
-	Name    string
-	Pos     byte
-	RingPos byte
+	Name     string `json:"name"`
+	Position byte   `json:"position"`
+	Ring     byte   `json:"ring"`
 }
