@@ -2,8 +2,9 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/mrumyantsev/encryption-app/pkg/machine"
-	"github.com/mrumyantsev/encryption-app/pkg/machine/enigma"
+	"github.com/labstack/echo/v4/middleware"
+	"github.com/mrumyantsev/cipher-machines-app/pkg/machine"
+	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma"
 	"github.com/mrumyantsev/logx/log"
 )
 
@@ -13,6 +14,8 @@ func main() {
 	e := echo.New()
 
 	e.HideBanner = true
+
+	e.Use(middleware.CORS())
 
 	e.GET("/machines-spec.json", machinesSpec)
 
