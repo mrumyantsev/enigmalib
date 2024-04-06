@@ -1,6 +1,8 @@
 package enigma
 
 import (
+	"strings"
+
 	"github.com/mrumyantsev/cipher-machines-app/pkg/machine"
 	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/base"
 	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/parts"
@@ -21,7 +23,7 @@ func NewEnigmaINE(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 	for i := 0; i < base.RotorsCount3; i++ {
 		settings = rotorSet[i]
 
-		switch settings.Name {
+		switch strings.ToUpper(settings.Name) {
 		case "II":
 			rots[i] = parts.NewINERotorII(settings.Position, settings.Ring)
 		case "III":

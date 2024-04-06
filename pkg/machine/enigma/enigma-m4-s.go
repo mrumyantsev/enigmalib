@@ -1,6 +1,8 @@
 package enigma
 
 import (
+	"strings"
+
 	"github.com/mrumyantsev/cipher-machines-app/pkg/machine"
 	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/base"
 	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/parts"
@@ -15,7 +17,7 @@ type EnigmaM4S struct {
 func NewEnigmaM4S(reflector string, rotorSet [base.RotorsCount4]machine.RotorSettings, pboard string) *EnigmaM4S {
 	var refl base.Reflectorer
 
-	switch reflector {
+	switch strings.ToUpper(reflector) {
 	case "C THIN":
 		refl = parts.NewM4SReflectorCThin()
 	default:
@@ -28,7 +30,7 @@ func NewEnigmaM4S(reflector string, rotorSet [base.RotorsCount4]machine.RotorSet
 	for i := 0; i < base.RotorsCount4; i++ {
 		settings = rotorSet[i]
 
-		switch settings.Name {
+		switch strings.ToUpper(settings.Name) {
 		case "GAMMA":
 			rots[i] = parts.NewM4SRotorGamma(settings.Position, settings.Ring)
 		case "I":
