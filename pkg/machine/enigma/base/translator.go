@@ -4,11 +4,7 @@ type Translator struct {
 }
 
 func NewTranslator() *Translator {
-	return &Translator{}
-}
-
-func EmptyTranslator() *Reflector {
-	return &Reflector{}
+	return new(Translator)
 }
 
 func (t *Translator) TranslateIn(c byte) byte {

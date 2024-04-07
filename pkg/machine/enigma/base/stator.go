@@ -1,12 +1,12 @@
 package base
 
 type Stator struct {
-	*Reflector
+	Reflector
 	inverse []byte
 }
 
 func NewStator(encoding string, charsCount byte) *Stator {
-	s := EmptyStator()
+	s := new(Stator)
 
 	s.charsCount = charsCount
 
@@ -15,10 +15,6 @@ func NewStator(encoding string, charsCount byte) *Stator {
 	s.initInverseWiring(&encoding)
 
 	return s
-}
-
-func EmptyStator() *Stator {
-	return &Stator{Reflector: EmptyReflector()}
 }
 
 func (s *Stator) Backward(c byte) byte {

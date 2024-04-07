@@ -5,21 +5,17 @@ import (
 )
 
 type Plugboard struct {
-	*Reflector
+	Reflector
 }
 
 func NewPlugboard(plugs string, charsCount byte) *Plugboard {
-	p := EmptyPlugboard()
+	p := new(Plugboard)
 
 	p.charsCount = charsCount
 
 	p.initWiring(&plugs)
 
 	return p
-}
-
-func EmptyPlugboard() *Plugboard {
-	return &Plugboard{Reflector: EmptyReflector()}
 }
 
 func (p *Plugboard) initWiring(plugs *string) {

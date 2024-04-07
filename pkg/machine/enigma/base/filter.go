@@ -4,11 +4,7 @@ type Filter struct {
 }
 
 func NewFilter() *Filter {
-	return &Filter{}
-}
-
-func EmptyFilter() *Reflector {
-	return &Reflector{}
+	return new(Filter)
 }
 
 func (f *Filter) Filter(c byte) byte {

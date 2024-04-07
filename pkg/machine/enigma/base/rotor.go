@@ -1,14 +1,14 @@
 package base
 
 type Rotor struct {
-	*Stator
+	Stator
 	notches []bool
 	pos     byte
 	ring    byte
 }
 
 func NewRotor(encoding string, notchPoses string, pos byte, ring byte, charsCount byte) *Rotor {
-	r := EmptyRotor()
+	r := new(Rotor)
 
 	r.charsCount = charsCount
 
@@ -23,10 +23,6 @@ func NewRotor(encoding string, notchPoses string, pos byte, ring byte, charsCoun
 	r.initNotches(&notchPoses)
 
 	return r
-}
-
-func EmptyRotor() *Rotor {
-	return &Rotor{Stator: EmptyStator()}
 }
 
 func (r *Rotor) Forward(c byte) byte {
