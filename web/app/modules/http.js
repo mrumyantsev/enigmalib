@@ -1,0 +1,84 @@
+export const machinesSpecUrl = 'http://127.0.0.1:8080/machines-spec.json';
+export const encryptTextUrl = 'http://127.0.0.1:8080/encrypt-text';
+
+// getMachinesSpec gets all the machines spec from the server.
+export const getMachinesSpec = () => {
+    console.debug('getting machines spec...');
+
+    return doHttpRequest(machinesSpecUrl);
+}
+
+// postPlaintext posts plaintext with the machine setting to server and
+// receives ciphertext.
+export const postPlaintext = (config) => {
+    console.debug('posting plaintext...');
+
+    const machine = config.spec.machines[config.machine];
+    const setting = config.settings[config.machine];
+    const machineName = machine.name;
+    const reflectorName = machine.reflectors[setting.reflector].name;
+    const plugboardText = setting.plugboard;
+    
+    const rotorSettings = [];
+
+    let r;
+
+    for (let i = 0; i < setting.rotors.length; i++) {
+        r = setting.rotors[i].rotor;
+
+        rotorSettings.push({
+            name: machine.rotors[r].name,
+            position: setting.rotors[i].position,
+            ring: setting.rotors[i].ring
+        });
+    }
+    
+    const data = {
+        plaintext: config.plaintext,
+        machine: machine.name,
+        settings: {
+            reflector: reflectorName,
+            rotorSettings: rotorSettings,
+            plugboard: plugboardText
+        }
+    }
+
+    console.log('data out:', data);
+
+    return doHttpRequest(encryptTextUrl, 'POST', JSON.stringify(data));
+}
+
+// doHttpRequest does a basic synchronous uncached HTTP request, using
+// JSON data type as default.
+const doHttpRequest = (url, method, data, dataType) => {
+    let response = {};
+
+    if (!dataType) {
+        dataType = 'json';
+    }
+
+    $.ajax({
+        async: false,
+        cache: false,
+        url: url,
+        type: method,
+        data: data,
+        dataType: dataType,
+        success: (data, textStatus, jqXHR) => {
+            response = {
+                data: data,
+                textStatus: textStatus,
+                jqXHR: jqXHR
+            };
+        },
+        error: (jqXHR, textStatus, errorThrown) => {
+            response = {
+                jqXHR: jqXHR,
+                textStatus: textStatus,
+                errorThrown: errorThrown
+            };
+        }
+    });
+
+    return response;
+}

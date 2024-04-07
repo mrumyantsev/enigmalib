@@ -1,0 +1,169 @@
+* {
+    -youbkit-touch-callout: none;
+    -youbkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.navbar {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.navbar-brand {
+    font-family: "Goldman", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.nav-item .dropdown, ul .navbar-nav {
+    display: inline;
+}
+
+.settings {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#info {
+    /* display: block; */
+    display: none;
+}
+
+.settings-module {
+    display: inline;
+    margin-right: 10px;
+}
+
+.settings-module p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 0px;
+}
+
+#machine-button {
+    width: 90px;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+button.button-level1 {
+    margin-bottom: 2px;
+}
+
+button.button-level2 {
+    margin-top: 1px;
+    margin-bottom: 2px;
+}
+
+.dropdown-toggle {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    text-align: left;
+    cursor: default;
+}
+
+.dropdown {
+    display: grid;
+}
+
+.dropdown-menu {
+    margin-left: 0px;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: calc(100vh - 180px);
+}
+
+.dropdown-item {
+    font-size: .942em;
+}
+
+.dropdown-item:active {
+    background-color: #6c757d;
+}
+
+#plugboard {
+    margin-right: 0px;
+}
+
+.form-control {
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    resize: none;
+    overflow: hidden;
+    padding: 6px 14px;
+}
+
+#plugboardtext {
+    margin-top: 6px;
+    margin-left: 1px;
+    max-width: 200px;
+    height: 68px;
+}
+
+.form-control:focus {
+    border-color: rgb(206, 212, 218);
+}
+
+#encrypt {
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-bottom: 3px;
+}
+
+#checkboxes {
+    margin-bottom: 10px;
+    font-size: .942em;
+}
+
+.form-check {
+    margin-bottom: 1px;
+    white-space: nowrap;
+}
+
+.form-check-input:not(:checked) {
+    border: 1px solid rgba(0, 0, 0, .25);
+}
+
+#encrypt-button {
+    font-family: "Goldman", sans-serif;
+    font-weight: 400;
+    color: #fff;
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+}
+
+#encrypt-button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.textfields {
+    display: inline-flex;
+    width: 100%;
+    height: 300px;
+}
+
+.textfield {
+    margin: 25px;
+    border-radius: 8px;
+}
+
+#plaintext {
+    margin-right: 7px;
+}
+
+#ciphertext {
+    margin-left: 8px;
+    background-color: --bs-gray;
+}
