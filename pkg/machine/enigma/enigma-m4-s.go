@@ -56,7 +56,7 @@ func NewEnigmaM4S(reflector string, rotorSet [base.RotorsCount4]machine.RotorSet
 
 	sta := parts.NewIStator()
 
-	pb := base.NewPlugboard(pboard, base.CharsCount26)
+	pb := base.NewPlugboard(strings.ToUpper(pboard), base.CharsCount26)
 
 	fil := base.NewFilter()
 
@@ -70,7 +70,7 @@ func NewEnigmaM4S(reflector string, rotorSet [base.RotorsCount4]machine.RotorSet
 // EnigmaM4SSpec returns the Enigma M4 "Shark" specification.
 func EnigmaM4SSpec() machine.MachineSpec {
 	return machine.MachineSpec{
-		Name: "Enigma M4 \"Shark\"",
+		Name: `Enigma M4 "Shark"`,
 		Reflectors: []machine.ReflectorSpec{
 			{Name: "B Thin"},
 			{Name: "C Thin"},

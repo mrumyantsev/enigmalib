@@ -35,7 +35,7 @@ func NewEnigmaISM(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 
 	sta := parts.NewIStator()
 
-	pb := base.NewPlugboard(pboard, base.CharsCount26)
+	pb := base.NewPlugboard(strings.ToUpper(pboard), base.CharsCount26)
 
 	fil := base.NewFilter()
 
@@ -49,7 +49,7 @@ func NewEnigmaISM(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 // EnigmaISMSpec returns the Enigma I Sondermaschine A-17401 S specification.
 func EnigmaISMSpec() machine.MachineSpec {
 	return machine.MachineSpec{
-		Name: "Enigma I \"Sondermaschine\"",
+		Name: `Enigma I "Sondermaschine"`,
 		Rotors: []machine.RotorSpec{
 			{Name: "I", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
 			{Name: "II", Positions: base.CharsCount26, RingPositions: base.CharsCount26},

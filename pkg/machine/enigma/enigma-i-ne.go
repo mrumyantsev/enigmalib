@@ -39,7 +39,7 @@ func NewEnigmaINE(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 
 	sta := parts.NewIStator()
 
-	pb := base.NewPlugboard(pboard, base.CharsCount26)
+	pb := base.NewPlugboard(strings.ToUpper(pboard), base.CharsCount26)
 
 	fil := base.NewFilter()
 
@@ -53,7 +53,7 @@ func NewEnigmaINE(reflector string, rotorSet [base.RotorsCount3]machine.RotorSet
 // EnigmaINESpec returns the Enigma I Norway Enigma specification.
 func EnigmaINESpec() machine.MachineSpec {
 	return machine.MachineSpec{
-		Name: "Enigma I \"Norenigma\"",
+		Name: `Enigma I "Norenigma"`,
 		Rotors: []machine.RotorSpec{
 			{Name: "I", Positions: base.CharsCount26, RingPositions: base.CharsCount26},
 			{Name: "II", Positions: base.CharsCount26, RingPositions: base.CharsCount26},

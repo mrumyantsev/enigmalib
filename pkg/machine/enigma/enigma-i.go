@@ -48,7 +48,7 @@ func NewEnigmaI(reflector string, rotorSet [base.RotorsCount3]machine.RotorSetti
 
 	sta := parts.NewIStator()
 
-	pb := base.NewPlugboard(pboard, base.CharsCount26)
+	pb := base.NewPlugboard(strings.ToUpper(pboard), base.CharsCount26)
 
 	fil := base.NewFilter()
 
