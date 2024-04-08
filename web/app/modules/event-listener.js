@@ -36,10 +36,12 @@ export class EventListener {
             if (response.errorThrown) {
                 console.debug('could not get response with ciphertext. error:', response.errorThrown);
 
-                this.#config.ciphertext = 'server error';
-            } else {
-                this.#config.ciphertext = response.data.ciphertext;
+                ciphertextTextarea.text('server error');
+
+                return;
             }
+
+            this.#config.ciphertext = response.data.ciphertext;
 
             if (this.#config.isGroupBy5) {
                 this.#config.ciphertext = this.#groupBy5(this.#config.ciphertext);
