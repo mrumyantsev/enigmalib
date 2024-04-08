@@ -5,14 +5,21 @@ import * as http from '/app/modules/http.js';
 export class EventListener {
 
     #config;
+    #elementManager;
     #elements;
 
-    constructor(config, elements) {
+    constructor(config, elementManager) {
         this.#config = config;
-        this.#elements = elements;
+        this.#elementManager = elementManager;
+        this.#elements = elementManager.elements;
     }
 
     listen() {
+        const machineList = this.#elements.lists.machine;
+        const reflectorList = this.#elements.lists.reflector;
+        const rotorsLists = this.#elements.lists.rotors;
+        const positionsLists = this.#elements.lists.positions;
+        const ringsLists = this.#elements.lists.rings;
         const plugboardTextarea = this.#elements.textareas.plugboardtext;
         const plaintextTextarea = this.#elements.textareas.plaintext;
         const ciphertextTextarea = this.#elements.textareas.ciphertext;
@@ -22,6 +29,42 @@ export class EventListener {
         const machine = this.#config.machine;
         const setting = this.#config.settings[machine];
 
+        machineList.on('click', (event) => {
+            const index = event.target.cmIndex;
+
+            this.#elementManager.selectMachine(index);
+        });
+
+        reflectorList.on('click', (event) => {
+            const index = event.target.cmIndex;
+
+            this.#elementManager.selectReflector(index);
+        });
+
+        rotorsLists.forEach((list, number) => {
+            list.on('click', (event) => {
+                const index = event.target.cmIndex;
+
+                this.#elementManager.selectRotor(number, index);
+            });
+        });
+
+        positionsLists.forEach((list, number) => {
+            list.on('click', (event) => {
+                const index = event.target.cmIndex;
+
+                this.#elementManager.selectPosition(number, index);
+            });
+        });
+
+        ringsLists.forEach((list, number) => {
+            list.on('click', (event) => {
+                const index = event.target.cmIndex;
+
+                this.#elementManager.selectRing(number, index);
+            });
+        });
+
         plugboardTextarea.on('input', () => {
             setting.plugboard = plugboardTextarea.val();
         });
@@ -30,7 +73,7 @@ export class EventListener {
             this.#config.plaintext = plaintextTextarea.val();
         });
 
-        encryptButton.on('click', () => {
+        encryptButton.on('click', (event) => {
             const response = http.postPlaintext(this.#config);
 
             if (response.errorThrown) {
@@ -40,6 +83,8 @@ export class EventListener {
 
                 return;
             }
+
+            event.target.blur();
 
             this.#config.ciphertext = response.data.ciphertext;
 

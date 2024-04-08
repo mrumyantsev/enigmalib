@@ -85,8 +85,8 @@ export class ElementManager {
         this.#updateMachinesList();
     }
 
-    selectMachine(idx) {
-        this.#config.machine = idx;
+    selectMachine(index) {
+        this.#config.machine = index;
     
         const machine = this.#config.spec.machines[this.#config.machine];
         const machineButton = this.#elements.buttons.machine;
@@ -133,46 +133,46 @@ export class ElementManager {
         this.updateVisibilities();
     }
     
-    selectReflector(idx) {
+    selectReflector(index) {
         const setting = this.#config.settings[this.#config.machine];
         const machine = this.#config.spec.machines[this.#config.machine];
         const reflectorButton = this.#elements.buttons.reflector;
     
-        setting.reflector = idx;
+        setting.reflector = index;
     
-        const reflectorName = machine.reflectors[idx].name;
+        const reflectorName = machine.reflectors[index].name;
     
         reflectorButton.text(reflectorName);
     }
     
-    selectRotor(num, idx) {
+    selectRotor(number, index) {
         const setting = this.#config.settings[this.#config.machine];
         const machine = this.#config.spec.machines[this.#config.machine];
         const rotorsButtons = this.#elements.buttons.rotors;
     
-        setting.rotors[num].rotor = idx;
+        setting.rotors[number].rotor = index;
     
-        const rotorName = machine.rotors[idx].name;
+        const rotorName = machine.rotors[index].name;
     
-        rotorsButtons[num].text(rotorName);
+        rotorsButtons[number].text(rotorName);
     }
     
-    selectPosition(num, idx) {
+    selectPosition(number, index) {
         const setting = this.#config.settings[this.#config.machine];
         const positionsButtons = this.#elements.buttons.positions;
     
-        setting.rotors[num].position = idx;
+        setting.rotors[number].position = index;
     
-        positionsButtons[num].text(idx+1);
+        positionsButtons[number].text(index+1);
     }
     
-    selectRing(num, idx) {
+    selectRing(number, index) {
         const setting = this.#config.settings[this.#config.machine];
         const ringsButtons = this.#elements.buttons.rings;
     
-        setting.rotors[num].ring = idx;
+        setting.rotors[number].ring = index;
     
-        ringsButtons[num].text(idx+1);
+        ringsButtons[number].text(index+1);
     }
     
     displayInfo(text) {
@@ -223,7 +223,7 @@ export class ElementManager {
             machineName = machines[i].name;
     
             machineList.addItem(
-                    machineName, `this.selectMachine(${i})`);
+                    machineName, `this.cmIndex=${i}`);
         }
     }
     
@@ -244,7 +244,7 @@ export class ElementManager {
             machineName = machine.reflectors[i].name;
     
             reflectorList.addItem(
-                    machineName, `this.selectReflector(${i})`);
+                    machineName, `this.cmIndex=${i}`);
         }
     }
     
@@ -270,17 +270,17 @@ export class ElementManager {
                 rotorName = machine.rotors[i].name;
     
                 rotorsLists[j].addItem(
-                        rotorName, `this.selectRotor(${j}, ${i})`);
+                        rotorName, `this.cmIndex=${i}`);
             }
     
             for (let i = 0; i < machine.rotors[j].positions; i++) {
                 positionsLists[j].addItem(
-                        i+1, `this.selectPosition(${j}, ${i})`);
+                        i+1, `this.cmIndex=${i}`);
             }
     
             for (let i = 0; i < machine.rotors[j].ringPositions; i++) {
                 ringsLists[j].addItem(
-                        i+1, `this.selectRing(${j}, ${i})`);
+                        i+1, `this.cmIndex=${i}`);
             }
         }
     }

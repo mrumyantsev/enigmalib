@@ -22,7 +22,7 @@ export class Application {
 
     constructor() {
         this.#elementManager = new ElementManager(this.#config);
-        this.#eventListener = new EventListener(this.#config, this.#elementManager.elements);
+        this.#eventListener = new EventListener(this.#config, this.#elementManager);
     }
 
     run() {
