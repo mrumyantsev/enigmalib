@@ -341,7 +341,7 @@ class Elem {
 
     addItem(text, onclick) {
         this.#selector.append(`<li>
-  <a class='dropdown-item' onclick='${onclick}'>
+  <a class="dropdown-item" onclick="${onclick}">
     ${text}
   </a>
 </li>
