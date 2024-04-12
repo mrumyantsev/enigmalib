@@ -5,7 +5,6 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/config"
 	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/handler"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/mw"
 	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/server"
 	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/service"
 	"github.com/mrumyantsev/logx/log"
@@ -28,7 +27,6 @@ func New() *App {
 
 	mw := []echo.MiddlewareFunc{
 		middleware.CORS(),
-		mw.HandlerErrorLogging(),
 	}
 
 	svc := service.New(cfg)
