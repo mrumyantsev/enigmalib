@@ -1,9 +1,17 @@
 package main
 
-import "github.com/mrumyantsev/cipher-machines-app/internal/app/server"
+import (
+	"github.com/mrumyantsev/cipher-machines-app/internal/app/server"
+	"github.com/mrumyantsev/logx/log"
+)
 
 func main() {
-	app := server.New()
+	app, err := server.New()
+	if err != nil {
+		log.Fatal("failed to initialize application", err)
+	}
 
-	app.Run()
+	if err = app.Run(); err != nil {
+		log.Fatal("failed to run application", err)
+	}
 }
