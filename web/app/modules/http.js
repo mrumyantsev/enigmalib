@@ -1,11 +1,11 @@
-export const machinesSpecUrl = 'http://127.0.0.1:8080/machines-spec.json';
-export const encryptTextUrl = 'http://127.0.0.1:8080/encrypt-text';
+const urlGetMachinesSpec = 'http://127.0.0.1:8080/machines-spec';
+const urlPostPlaintext = 'http://127.0.0.1:8080/plaintext';
 
 // getMachinesSpec gets all the machines spec from the server.
 export const getMachinesSpec = () => {
     console.debug('getting machines spec...');
 
-    return doHttpRequest(machinesSpecUrl);
+    return doHttpRequest(urlGetMachinesSpec);
 }
 
 // postPlaintext posts plaintext with the machine setting to server and
@@ -45,7 +45,7 @@ export const postPlaintext = (config) => {
 
     console.log('data out:', data);
 
-    return doHttpRequest(encryptTextUrl, 'POST', JSON.stringify(data));
+    return doHttpRequest(urlPostPlaintext, 'POST', JSON.stringify(data));
 }
 
 // doHttpRequest does a basic synchronous uncached HTTP request, using
