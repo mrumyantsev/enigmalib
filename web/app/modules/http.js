@@ -16,21 +16,35 @@ export const postPlaintext = (config) => {
     const machine = config.spec.machines[config.machine];
     const setting = config.settings[config.machine];
     const machineName = machine.name;
-    const reflectorName = machine.reflectors[setting.reflector].name;
-    const plugboardText = setting.plugboard;
-    
-    const rotorSettings = [];
 
-    let r;
+    let reflectorName = null;
 
-    for (let i = 0; i < setting.rotors.length; i++) {
-        r = setting.rotors[i].rotor;
+    if (machine.reflectorsCount) {
+        reflectorName = machine.reflectors[setting.reflector].name;
+    }
 
-        rotorSettings.push({
-            name: machine.rotors[r].name,
-            position: setting.rotors[i].position,
-            ring: setting.rotors[i].ring
-        });
+    let rotorSettings = null;
+
+    if (machine.rotorsCount) {
+        rotorSettings = [];
+
+        let r;
+
+        for (let i = 0; i < setting.rotors.length; i++) {
+            r = setting.rotors[i].rotor;
+
+            rotorSettings.push({
+                name: machine.rotors[r].name,
+                position: setting.rotors[i].position,
+                ring: setting.rotors[i].ring
+            });
+        }
+    }
+
+    let plugboardText = null;
+
+    if (machine.plugboardsCount) {
+        plugboardText = setting.plugboard;
     }
     
     const data = {
