@@ -10,18 +10,18 @@ type MachinesSpec interface {
 	MachinesSpec() machine.MachinesSpec
 }
 
-type Ciphertext interface {
-	Ciphertext(plaintext models.PlaintextMsg) (models.CiphertextMsg, error)
+type Encryption interface {
+	Encryption(plaintext models.PlaintextMsg) (models.CiphertextMsg, error)
 }
 
 type Service struct {
 	MachinesSpec MachinesSpec
-	Ciphertext   Ciphertext
+	Encryption   Encryption
 }
 
 func New(cfg *config.Config) *Service {
 	return &Service{
 		MachinesSpec: NewMachinesSpecService(cfg),
-		Ciphertext:   NewCiphertextService(cfg),
+		Encryption:   NewEncryptionService(cfg),
 	}
 }

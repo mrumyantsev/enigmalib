@@ -11,17 +11,17 @@ import (
 	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/base"
 )
 
-type CiphertextService struct {
+type EncryptionService struct {
 	config *config.Config
 }
 
-func NewCiphertextService(cfg *config.Config) *CiphertextService {
-	return &CiphertextService{
+func NewEncryptionService(cfg *config.Config) *EncryptionService {
+	return &EncryptionService{
 		config: cfg,
 	}
 }
 
-func (s *CiphertextService) Ciphertext(plaintext models.PlaintextMsg) (models.CiphertextMsg, error) {
+func (s *EncryptionService) Encryption(plaintext models.PlaintextMsg) (models.CiphertextMsg, error) {
 	var m machine.Machiner
 
 	if strings.EqualFold(plaintext.Machine, `Enigma I "Norenigma"`) {

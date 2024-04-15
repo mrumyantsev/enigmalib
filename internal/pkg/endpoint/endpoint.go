@@ -10,24 +10,24 @@ type MachinesSpec interface {
 	MachinesSpec(ctx echo.Context) error
 }
 
-type Plaintext interface {
-	Plaintext(ctx echo.Context) error
+type Encryption interface {
+	Encryption(ctx echo.Context) error
 }
 
 type Endpoint struct {
 	MachinesSpec MachinesSpec
-	Plaintext    Plaintext
+	Encryption   Encryption
 }
 
 func New(cfg *config.Config, svc *service.Service) *Endpoint {
 	return &Endpoint{
 		MachinesSpec: NewMachinesSpecEndpoint(cfg, svc.MachinesSpec),
-		Plaintext:    NewPlaintextEndpoint(cfg, svc.Ciphertext),
+		Encryption:   NewEncryptionEndpoint(cfg, svc.Encryption),
 	}
 }
 
 func (e *Endpoint) InitRoutes(echo *echo.Echo) {
 	echo.GET("/machines-spec", e.MachinesSpec.MachinesSpec)
 
-	echo.POST("/plaintext", e.Plaintext.Plaintext)
+	echo.POST("/encryption", e.Encryption.Encryption)
 }
