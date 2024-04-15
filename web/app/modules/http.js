@@ -1,5 +1,5 @@
 const urlGetMachinesSpec = 'http://127.0.0.1:8080/machines-spec';
-const urlPostPlaintext = 'http://127.0.0.1:8080/plaintext';
+const urlPostPlaintext = 'http://127.0.0.1:8080/encryption';
 
 // getMachinesSpec gets all the machines spec from the server.
 export const getMachinesSpec = () => {
