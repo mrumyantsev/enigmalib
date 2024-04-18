@@ -24,31 +24,34 @@ func NewEncryptionService(cfg *config.Config) *EncryptionService {
 func (s *EncryptionService) Encryption(plaintext models.PlaintextMsg) (models.CiphertextMsg, error) {
 	var m machine.Machiner
 
-	if strings.EqualFold(plaintext.Machine, `Enigma I "Norenigma"`) {
+	machineName := strings.ToLower(plaintext.Machine)
+
+	switch machineName {
+	case `enigma i "norenigma"`:
 		m = enigma.NewEnigmaINE(
 			plaintext.Settings.Reflector,
 			[base.RotorsCount3]machine.RotorSettings(plaintext.Settings.RotorSettings),
 			plaintext.Settings.Plugboard,
 		)
-	} else if strings.EqualFold(plaintext.Machine, `Enigma I "Sondermaschine"`) {
+	case `enigma i "sondermaschine"`:
 		m = enigma.NewEnigmaISM(
 			plaintext.Settings.Reflector,
 			[base.RotorsCount3]machine.RotorSettings(plaintext.Settings.RotorSettings),
 			plaintext.Settings.Plugboard,
 		)
-	} else if strings.EqualFold(plaintext.Machine, "Enigma M3") {
+	case "enigma m3":
 		m = enigma.NewEnigmaM3(
 			plaintext.Settings.Reflector,
 			[base.RotorsCount3]machine.RotorSettings(plaintext.Settings.RotorSettings),
 			plaintext.Settings.Plugboard,
 		)
-	} else if strings.EqualFold(plaintext.Machine, `Enigma M4 "Shark"`) {
+	case `enigma m4 "shark"`:
 		m = enigma.NewEnigmaM4S(
 			plaintext.Settings.Reflector,
 			[base.RotorsCount4]machine.RotorSettings(plaintext.Settings.RotorSettings),
 			plaintext.Settings.Plugboard,
 		)
-	} else {
+	default:
 		m = enigma.NewEnigmaI(
 			plaintext.Settings.Reflector,
 			[base.RotorsCount3]machine.RotorSettings(plaintext.Settings.RotorSettings),
