@@ -1,4 +1,4 @@
-module github.com/mrumyantsev/cipher-machines-app
+module github.com/mrumyantsev/enigma-app
 
 go 1.20
 

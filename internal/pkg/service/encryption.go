@@ -3,12 +3,12 @@ package service
 import (
 	"strings"
 
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/config"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/models"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/lib/errlib"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/machine"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/base"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/config"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/models"
+	"github.com/mrumyantsev/enigma-app/pkg/lib/errlib"
+	"github.com/mrumyantsev/enigma-app/pkg/machine"
+	"github.com/mrumyantsev/enigma-app/pkg/machine/enigma"
+	"github.com/mrumyantsev/enigma-app/pkg/machine/enigma/base"
 )
 
 type EncryptionService struct {

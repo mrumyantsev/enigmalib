@@ -1,6 +1,6 @@
 package models
 
-import "github.com/mrumyantsev/cipher-machines-app/pkg/machine"
+import "github.com/mrumyantsev/enigma-app/pkg/machine"
 
 type PlaintextMsg struct {
 	Plaintext string   `json:"plaintext"`

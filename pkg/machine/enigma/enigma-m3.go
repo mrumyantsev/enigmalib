@@ -3,9 +3,9 @@ package enigma
 import (
 	"strings"
 
-	"github.com/mrumyantsev/cipher-machines-app/pkg/machine"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/base"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma/parts"
+	"github.com/mrumyantsev/enigma-app/pkg/machine"
+	"github.com/mrumyantsev/enigma-app/pkg/machine/enigma/base"
+	"github.com/mrumyantsev/enigma-app/pkg/machine/enigma/parts"
 )
 
 // An Enigma M3 model.

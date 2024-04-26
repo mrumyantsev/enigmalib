@@ -2,8 +2,8 @@ package endpoint
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/config"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/service"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/config"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/service"
 )
 
 type MachinesSpec interface {

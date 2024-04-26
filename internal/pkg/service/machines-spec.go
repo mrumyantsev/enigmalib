@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/config"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/machine"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/machine/enigma"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/config"
+	"github.com/mrumyantsev/enigma-app/pkg/machine"
+	"github.com/mrumyantsev/enigma-app/pkg/machine/enigma"
 )
 
 type MachinesSpecService struct {

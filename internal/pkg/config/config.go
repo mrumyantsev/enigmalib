@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/kelseyhightower/envconfig"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/lib/errlib"
+	"github.com/mrumyantsev/enigma-app/pkg/lib/errlib"
 )
 
 // A Config is the application configuration structure.

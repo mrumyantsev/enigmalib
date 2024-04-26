@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/labstack/echo/v4"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/config"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/endpoint"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/lib/errlib"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/config"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/endpoint"
+	"github.com/mrumyantsev/enigma-app/pkg/lib/errlib"
 )
 
 type Server struct {

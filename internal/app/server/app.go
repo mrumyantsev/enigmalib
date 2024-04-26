@@ -2,11 +2,11 @@ package server
 
 import (
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/config"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/endpoint"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/server"
-	"github.com/mrumyantsev/cipher-machines-app/internal/pkg/service"
-	"github.com/mrumyantsev/cipher-machines-app/pkg/lib/errlib"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/config"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/endpoint"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/server"
+	"github.com/mrumyantsev/enigma-app/internal/pkg/service"
+	"github.com/mrumyantsev/enigma-app/pkg/lib/errlib"
 	"github.com/mrumyantsev/logx/log"
 )
 

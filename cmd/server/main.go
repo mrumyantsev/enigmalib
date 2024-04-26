@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/mrumyantsev/cipher-machines-app/internal/app/server"
+	"github.com/mrumyantsev/enigma-app/internal/app/server"
 	"github.com/mrumyantsev/logx/log"
 )
 
