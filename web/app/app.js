@@ -1,6 +1,6 @@
-import { ElementManager } from '/app/modules/element-manager.js';
-import { EventListener } from '/app/modules/event-listener.js';
-import * as http from '/app/modules/http.js';
+import { ElementManager } from "/app/modules/element-manager.js";
+import { EventListener } from "/app/modules/event-listener.js";
+import * as http from "/app/modules/http.js";
 
 // An Application is the root class to run the Cipher Machines web
 // application.
@@ -10,8 +10,8 @@ export class Application {
         maxRotors: 4,
         isGroupBy5: false,
         isLowercase: false,
-        plaintext: '',
-        ciphertext: '',
+        plaintext: "",
+        ciphertext: "",
         spec: null,
         machine: 0,
         settings: null,
@@ -29,28 +29,28 @@ export class Application {
         const response = http.getMachinesSpec();
 
         if (response.errorThrown) {
-            console.debug('could not get machines spec. error:', response);
+            console.debug("could not get machines spec. error:", response);
 
-            this.#elementManager.displayInfo('server is offline');
+            this.#elementManager.displayInfo("server is offline");
             
             return;
         }
 
         this.#config.spec = response.data;
 
-        console.debug('spec:', this.#config.spec);
+        console.debug("spec:", this.#config.spec);
 
         if (!this.#config.spec.machines) {
-            this.#elementManager.displayInfo('no machines available');
+            this.#elementManager.displayInfo("no machines available");
 
             return;
         }
 
         this.#initMachinesSettings();
 
-        this.#setMachineLike('M3');
+        this.#setMachineLike("M3");
 
-        console.debug('config:', this.#config);
+        console.debug("config:", this.#config);
 
         this.#elementManager.initElementsBySettings();
 
@@ -100,7 +100,7 @@ export class Application {
             }
     
             if (machine.plugboardsCount) {
-                setting.plugboard = '';
+                setting.plugboard = "";
             }
     
             settings.push(setting);

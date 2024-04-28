@@ -21,54 +21,54 @@ export class ElementManager {
         let ringName;
     
         for (let i = 0; i < this.#config.maxRotors; i++) {
-            rotorName = '#rotor' + (i+1);
-            positionName = '#position' + (i+1);
-            ringName = '#ring' + (i+1);
+            rotorName = "#rotor" + (i+1);
+            positionName = "#position" + (i+1);
+            ringName = "#ring" + (i+1);
     
-            rotorsContainers.push(new Elem(rotorName, 'inline'));
+            rotorsContainers.push(new Elem(rotorName, "inline"));
     
-            rotorsButtons.push(new Elem(rotorName + '-button'));
-            positionsButtons.push(new Elem(positionName + '-button'));
-            ringsButtons.push(new Elem(ringName + '-button'));
+            rotorsButtons.push(new Elem(rotorName + "-button"));
+            positionsButtons.push(new Elem(positionName + "-button"));
+            ringsButtons.push(new Elem(ringName + "-button"));
     
-            rotorsLists.push(new Elem(rotorName + '-list'));
-            positionsLists.push(new Elem(positionName + '-list'));
-            ringsLists.push(new Elem(ringName + '-list'));
+            rotorsLists.push(new Elem(rotorName + "-list"));
+            positionsLists.push(new Elem(positionName + "-list"));
+            ringsLists.push(new Elem(ringName + "-list"));
         }
     
         this.#elements = {
             containers: {
-                info: new Elem('#info'),
-                machine: new Elem('#machine', 'inline'),
-                reflector: new Elem('#reflector', 'inline'),
+                info: new Elem("#info"),
+                machine: new Elem("#machine", "inline"),
+                reflector: new Elem("#reflector", "inline"),
                 rotors: rotorsContainers,
-                plugboard: new Elem('#plugboard', 'inline'),
-                encrypt: new Elem('#encrypt'),
-                textFields: new Elem('.textfields', 'inline-flex')
+                plugboard: new Elem("#plugboard", "inline"),
+                encrypt: new Elem("#encrypt"),
+                textFields: new Elem(".textfields", "inline-flex")
             },
             buttons: {
-                machine: new Elem('#machine-button'),
-                reflector: new Elem('#reflector-button'),
+                machine: new Elem("#machine-button"),
+                reflector: new Elem("#reflector-button"),
                 rotors: rotorsButtons,
                 positions: positionsButtons,
                 rings: ringsButtons,
-                encrypt: new Elem('#encrypt-button')
+                encrypt: new Elem("#encrypt-button")
             },
             lists: {
-                machine: new Elem('#machine-list'),
-                reflector: new Elem('#reflector-list'),
+                machine: new Elem("#machine-list"),
+                reflector: new Elem("#reflector-list"),
                 rotors: rotorsLists,
                 positions: positionsLists,
                 rings: ringsLists
             },
             textareas: {
-                plugboardtext: new Elem('#plugboardtext'),
-                plaintext: new Elem('#plaintext'),
-                ciphertext: new Elem('#ciphertext')
+                plugboardtext: new Elem("#plugboardtext"),
+                plaintext: new Elem("#plaintext"),
+                ciphertext: new Elem("#ciphertext")
             },
             checkboxes: {
-                groupBy5: new Elem('#groupBy5'),
-                lowercase: new Elem('#lowercase')
+                groupBy5: new Elem("#groupBy5"),
+                lowercase: new Elem("#lowercase")
             },
         };
     }
@@ -317,7 +317,7 @@ class Elem {
         this.#selector = $(selectorText);
 
         if (!displayType) {
-            this.#displayType = 'block';
+            this.#displayType = "block";
         } else {
             this.#displayType = displayType;
         }
@@ -336,7 +336,7 @@ class Elem {
     }
 
     clear() {
-        this.#selector.html('');
+        this.#selector.html("");
     }
 
     addItem(text, onclick) {
@@ -349,11 +349,11 @@ class Elem {
     }
 
     hide() {
-        this.#selector.css('display', 'none');
+        this.#selector.css("display", "none");
     }
 
     show() {
-        this.#selector.css('display', this.#displayType);
+        this.#selector.css("display", this.#displayType);
     }
 
     on(event, callback) {

@@ -1,4 +1,4 @@
-import { Application } from '/app/app.js';
+import { Application } from "/app/app.js";
 
 const main = () => {
     const application = new Application();

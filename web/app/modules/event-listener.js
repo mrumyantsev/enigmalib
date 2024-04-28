@@ -1,4 +1,4 @@
-import * as http from '/app/modules/http.js';
+import * as http from "/app/modules/http.js";
 
 // An EventListener is used for listening and reacting on events like:
 // clicking buttons, input text, etc.
@@ -29,20 +29,20 @@ export class EventListener {
         const machine = this.#config.machine;
         const setting = this.#config.settings[machine];
 
-        machineList.on('click', (event) => {
+        machineList.on("click", (event) => {
             const index = event.target.cmIndex;
 
             this.#elementManager.selectMachine(index);
         });
 
-        reflectorList.on('click', (event) => {
+        reflectorList.on("click", (event) => {
             const index = event.target.cmIndex;
 
             this.#elementManager.selectReflector(index);
         });
 
         rotorsLists.forEach((list, number) => {
-            list.on('click', (event) => {
+            list.on("click", (event) => {
                 const index = event.target.cmIndex;
 
                 this.#elementManager.selectRotor(number, index);
@@ -50,7 +50,7 @@ export class EventListener {
         });
 
         positionsLists.forEach((list, number) => {
-            list.on('click', (event) => {
+            list.on("click", (event) => {
                 const index = event.target.cmIndex;
 
                 this.#elementManager.selectPosition(number, index);
@@ -58,28 +58,28 @@ export class EventListener {
         });
 
         ringsLists.forEach((list, number) => {
-            list.on('click', (event) => {
+            list.on("click", (event) => {
                 const index = event.target.cmIndex;
 
                 this.#elementManager.selectRing(number, index);
             });
         });
 
-        plugboardTextarea.on('input', () => {
+        plugboardTextarea.on("input", () => {
             setting.plugboard = plugboardTextarea.val();
         });
 
-        plaintextTextarea.on('input', () => {
+        plaintextTextarea.on("input", () => {
             this.#config.plaintext = plaintextTextarea.val();
         });
 
-        encryptButton.on('click', (event) => {
+        encryptButton.on("click", (event) => {
             const response = http.postPlaintext(this.#config);
 
             if (response.errorThrown) {
-                console.debug('could not get response with ciphertext. error:', response.errorThrown);
+                console.debug("could not get response with ciphertext. error:", response.errorThrown);
 
-                ciphertextTextarea.text('server error');
+                ciphertextTextarea.text("server error");
 
                 return;
             }
@@ -99,7 +99,7 @@ export class EventListener {
             ciphertextTextarea.text(this.#config.ciphertext);
         });
 
-        groupBy5Checkbox.on('change', () => {
+        groupBy5Checkbox.on("change", () => {
             this.#config.isGroupBy5 = !this.#config.isGroupBy5;
 
             if (this.#config.isGroupBy5) {
@@ -111,7 +111,7 @@ export class EventListener {
             ciphertextTextarea.text(this.#config.ciphertext);
         });
 
-        lowercaseCheckbox.on('change', () => {
+        lowercaseCheckbox.on("change", () => {
             this.#config.isLowercase = !this.#config.isLowercase;
 
             if (this.#config.isLowercase) {
@@ -125,23 +125,23 @@ export class EventListener {
     }
 
     #groupBy5(text) {
-        if (text === '') {
+        if (text === "") {
             return text;
         }
 
-        return this.#removeSpaces(text).match(/.{1,5}/g).join(' ');
+        return this.#removeSpaces(text).match(/.{1,5}/g).join(" ");
     }
 
     #removeSpaces(text) {
-        if (text === '') {
+        if (text === "") {
             return text;
         }
 
-        return text.replace(/ /g, '');
+        return text.replace(/ /g, "");
     }
 
     #lowercase(text) {
-        if (text === '') {
+        if (text === "") {
             return text;
         }
 
@@ -149,7 +149,7 @@ export class EventListener {
     }
 
     #uppercase(text) {
-        if (text === '') {
+        if (text === "") {
             return text;
         }
         
